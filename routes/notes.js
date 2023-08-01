@@ -5,9 +5,6 @@ const { v4: uuidv4 } = require('uuid');
 // GET Route for retrieving all notes
 router.get('/notes', (req, res) => {
   return readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data))
-    // .then((notes)=> {
-    //   return res.json(notes)
-    // }) 
   )
   });
 
@@ -29,10 +26,10 @@ router.get('/notes', (req, res) => {
     readFromFile('./db/db.json')
       .then((data) => JSON.parse(data))
       .then((json) => {
-        // Make a new array of all tips except the one with the ID provided in the URL
+        // Making new array of all notes except the one with the ID provided in the URL
         const result = json.filter((title) => title.id !== noteId);
   
-        // Save that array to the filesystem
+        // Save array to filesystem
         writeToFile('./db/db.json', result);
   
         // Respond to the DELETE request
@@ -53,9 +50,9 @@ router.post('/notes', (req, res) => {
       text,
       id: uuidv4(),
     };
-
+    // appending the new notes
     readAndAppend(newNotes, './db/db.json');
-
+    // the response
     const response = {
       status: 'success',
       body: newNotes,

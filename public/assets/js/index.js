@@ -1,6 +1,3 @@
-// const express = require('express');
-// const notesRouter = require('./notes');
-
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -14,8 +11,7 @@ if (window.location.pathname === '/notes') {
   newNoteBtn = document.querySelector('.new-note');
   noteList = document.querySelectorAll('.list-container .list-group');
 }
-// const app = express();
-// app.use('/notes', notesRouter);
+
 
 // Show an element
 const show = (elem) => {
@@ -186,4 +182,3 @@ if (window.location.pathname === '/notes') {
 }
 
 getAndRenderNotes();
-// module.exports = app;
